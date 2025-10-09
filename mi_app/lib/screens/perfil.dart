@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+
+
+
 class PerfilPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -9,7 +12,7 @@ class PerfilPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Nombre: Dr. Juan Pérez', style: TextStyle(fontSize: 20)),
+            Text('Nombre: Santiago Page', style: TextStyle(fontSize: 20)),
             SizedBox(height: 10),
             Text('Especialidad: Cardiología'),
             SizedBox(height: 30),

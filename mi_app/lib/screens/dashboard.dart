@@ -9,7 +9,7 @@ class DashboardPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Bienvenido al Dashboard', style: TextStyle(fontSize: 20)),
+            Text('Dashboard Medico', style: TextStyle(fontSize: 20)),
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
