@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/login.dart';  // Importa tu LoginPage del archivo screens/login.dart
+import 'screens/login.dart';  
 import 'screens/dashboard.dart';
 import 'screens/perfil.dart';
 
@@ -32,7 +32,7 @@ class ElMedicoApp extends StatelessWidget {
           onSurface: negro,
         ),
       ),
-      home: LoginPage(), // Ahora usará el LoginPage de screens/login.dart
+      home: LoginPage(), 
       routes: {
         '/login': (context) => LoginPage(),
         '/dashboard': (context) => DashboardPage(),
@@ -42,5 +42,3 @@ class ElMedicoApp extends StatelessWidget {
   }
 }
 
-// ❌ ELIMINA ESTO (ya no lo necesitas):
-// class LoginPage extends StatelessWidget { ... }

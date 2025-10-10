@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
-import 'home.dart'; // ← AGREGAR ESTA LÍNEA
-
-
+import 'home.dart';
 
 const Color cyanClaro = Color(0xFF63FFAC);
 const Color cyanOscuro = Color(0xFF30CBA1);
@@ -23,216 +21,209 @@ class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
 
   @override
-Widget build(BuildContext context) {
-  return Scaffold(
-    backgroundColor: blanco, // ← Fondo blanco se mantiene
-    body: SafeArea(
-      child: Center( // ← Centra la tarjeta
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(24.0), // Margen externo
-            child: Container(
-              // ========================================
-              // ✨ AQUÍ ESTÁ LA MAGIA: EL CONTENEDOR GRIS
-              // ========================================
-              padding: const EdgeInsets.symmetric(
-                horizontal: 32.0,
-                vertical: 40.0,
-              ), // Padding interno de la tarjeta
-              decoration: BoxDecoration(
-                color: Colors.grey[200], // ← Color gris de la tarjeta
-                borderRadius: BorderRadius.circular(20), // Esquinas redondeadas
-                boxShadow: [
-                  // Sombra para efecto de elevación
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.1),
-                    blurRadius: 10,
-                    offset: Offset(0, 5),
-                  ),
-                ],
-              ),
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min, // Ajusta al contenido
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    // 1️⃣ TÍTULO
-                    Text(
-                      'login Paciente',
-                      style: TextStyle(
-                        color: negro,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-
-                    SizedBox(height: 30),
-
-                    // 2️⃣ LOGO CIRCULAR
-                    CircleAvatar(
-                      radius: 60,
-                      backgroundColor: blanco,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.medical_services_outlined,
-                            color: cyanOscuro,
-                            size: 40,
-                          ),
-                          SizedBox(height: 4),
-                          Text(
-                            'VitaLog',
-                            style: TextStyle(
-                              color: negro,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-
-                    SizedBox(height: 40),
-
-                    // 3️⃣ CAMPO DE CORREO
-                    TextFormField(
-                      controller: correoController,
-                      style: TextStyle(color: negro),
-                      decoration: InputDecoration(
-                        labelText: 'Correo',
-                        labelStyle: TextStyle(color: Colors.grey[600]),
-                        filled: true,
-                        fillColor: blanco, // ← Fondo blanco del campo
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                          borderSide: BorderSide(color: cyanClaro, width: 2.0),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                          borderSide: BorderSide(color: cyanOscuro, width: 2.0),
-                        ),
-                        errorBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                          borderSide: BorderSide(color: Colors.red, width: 2.0),
-                        ),
-                        focusedErrorBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                          borderSide: BorderSide(color: Colors.red, width: 2.0),
-                        ),
-                      ),
-                      keyboardType: TextInputType.emailAddress,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Por favor, ingresa tu correo';
-                        }
-                        if (!value.contains('@')) {
-                          return 'Por favor, ingresa un correo válido';
-                        }
-                        return null;
-                      },
-                    ),
-
-                    SizedBox(height: 20),
-
-                    // 4️⃣ CAMPO DE CONTRASEÑA
-                    TextFormField(
-                      controller: contrasenaController,
-                      style: TextStyle(color: negro),
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        labelText: 'Contraseña',
-                        labelStyle: TextStyle(color: Colors.grey[600]),
-                        filled: true,
-                        fillColor: blanco, // ← Fondo blanco del campo
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                          borderSide: BorderSide(color: cyanClaro, width: 2.0),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                          borderSide: BorderSide(color: cyanOscuro, width: 2.0),
-                        ),
-                        errorBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                          borderSide: BorderSide(color: Colors.red, width: 2.0),
-                        ),
-                        focusedErrorBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                          borderSide: BorderSide(color: Colors.red, width: 2.0),
-                        ),
-                      ),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Por favor, ingresa tu contraseña';
-                        }
-                        if (value.length < 6) {
-                          return 'La contraseña debe tener al menos 6 caracteres';
-                        }
-                        return null;
-                      },
-                    ),
-
-                    SizedBox(height: 30),
-
-                    // 5️⃣ BOTÓN DE INGRESAR
-                                        // 5️⃣ BOTÓN DE INGRESAR
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: cyanClaro,
-                        minimumSize: Size(double.infinity, 50),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          // ✨ NAVEGAR A HOME
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => HomePage(),
-                            ),
-                          );
-                        }
-                      },
-                      child: Text(
-                        'INGRESAR',
-                        style: TextStyle(
-                          color: negro,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        ),
-                      ),
-                    ),
-
-                    SizedBox(height: 15),
-
-                    // 6️⃣ ENLACE "OLVIDASTE TU CONTRASEÑA"
-                    TextButton(
-                      onPressed: () {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text('Función de recuperación próximamente'),
-                          ),
-                        );
-                      },
-                      child: Text(
-                        '¿Olvidaste tu contraseña?',
-                        style: TextStyle(color: cyanOscuro),
-                      ),
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: blanco,
+      body: SafeArea(
+        child: Center(
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(24.0),
+              child: Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 32.0,
+                  vertical: 40.0,
+                ),
+                decoration: BoxDecoration(
+                  color: Colors.grey[200],
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.1),
+                      blurRadius: 10,
+                      offset: Offset(0, 5),
                     ),
                   ],
+                ),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      // Título
+                      Text(
+                        'login Paciente',
+                        style: TextStyle(
+                          color: negro,
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+
+                      SizedBox(height: 30),
+
+                      // Logo
+                      CircleAvatar(
+                        radius: 60,
+                        backgroundColor: blanco,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.medical_services_outlined,
+                              color: cyanOscuro,
+                              size: 40,
+                            ),
+                            SizedBox(height: 4),
+                            Text(
+                              'VitaLog',
+                              style: TextStyle(
+                                color: negro,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      SizedBox(height: 40),
+
+                      // Campo correo
+                      TextFormField(
+                        controller: correoController,
+                        style: TextStyle(color: negro),
+                        decoration: InputDecoration(
+                          labelText: 'Correo',
+                          labelStyle: TextStyle(color: Colors.grey[600]),
+                          filled: true,
+                          fillColor: blanco,
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                            borderSide: BorderSide(color: cyanClaro, width: 2.0),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                            borderSide: BorderSide(color: cyanOscuro, width: 2.0),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                            borderSide: BorderSide(color: Colors.red, width: 2.0),
+                          ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                            borderSide: BorderSide(color: Colors.red, width: 2.0),
+                          ),
+                        ),
+                        keyboardType: TextInputType.emailAddress,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Por favor, ingresa tu correo';
+                          }
+                          if (!value.contains('@')) {
+                            return 'Por favor, ingresa un correo válido';
+                          }
+                          return null;
+                        },
+                      ),
+
+                      SizedBox(height: 20),
+
+                      // Campo contraseña
+                      TextFormField(
+                        controller: contrasenaController,
+                        style: TextStyle(color: negro),
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          labelText: 'Contraseña',
+                          labelStyle: TextStyle(color: Colors.grey[600]),
+                          filled: true,
+                          fillColor: blanco,
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                            borderSide: BorderSide(color: cyanClaro, width: 2.0),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                            borderSide: BorderSide(color: cyanOscuro, width: 2.0),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                            borderSide: BorderSide(color: Colors.red, width: 2.0),
+                          ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                            borderSide: BorderSide(color: Colors.red, width: 2.0),
+                          ),
+                        ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Por favor, ingresa tu contraseña';
+                          }
+                          if (value.length < 6) {
+                            return 'La contraseña debe tener al menos 6 caracteres';
+                          }
+                          return null;
+                        },
+                      ),
+
+                      SizedBox(height: 30),
+
+                      // Botón y navegación
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: cyanClaro,
+                          minimumSize: Size(double.infinity, 50),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => HomePage(),
+                              ),
+                            );
+                          }
+                        },
+                        child: Text(
+                          'INGRESAR',
+                          style: TextStyle(
+                            color: negro,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ),
+
+                      SizedBox(height: 15),
+
+                      TextButton(
+                        onPressed: () {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('Función de recuperación próximamente'),
+                            ),
+                          );
+                        },
+                        child: Text(
+                          '¿Olvidaste tu contraseña?',
+                          style: TextStyle(color: cyanOscuro),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
           ),
         ),
       ),
-    ),
-  );
-}
+    );
+  }
 
   @override
   void dispose() {
