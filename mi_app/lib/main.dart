@@ -3,6 +3,8 @@ import 'screens/login.dart';
 import 'screens/dashboard.dart';
 import 'screens/perfil.dart';
 import 'screens/test_connection_page.dart';
+import 'screens/fichas_screen.dart';
+
 
 // Paleta de colores
 const Color cyanClaro = Color(0xFF63FFAC);
@@ -39,6 +41,7 @@ class ElMedicoApp extends StatelessWidget {
         '/dashboard': (context) => DashboardPage(),
         '/perfil': (context) => PerfilPage(),
         '/test-connection': (context) => const TestConnectionPage(), 
+        '/fichas': (context) => FichasScreen(),
       },
     );
   }

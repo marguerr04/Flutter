@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
+import 'package:mi_app/screens/dashboard.dart';
 import 'home.dart';
 
 const Color cyanClaro = Color(0xFF63FFAC);
@@ -130,7 +131,6 @@ class _LoginPageState extends State<LoginPage> {
 
                       SizedBox(height: 20),
 
-                      // Campo contraseña
                       TextFormField(
                         controller: contrasenaController,
                         style: TextStyle(color: negro),
@@ -184,7 +184,7 @@ class _LoginPageState extends State<LoginPage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => HomePage(),
+                                builder: (context) => DashboardPage(),
                               ),
                             );
                           }
