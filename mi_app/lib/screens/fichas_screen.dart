@@ -12,7 +12,7 @@ class FichasScreen extends StatelessWidget {
  
 
           Expanded(
-          flex: 2, // 20% del total
+          flex: 2, 
           child: AdminSidebar(
             selectedIndex: 1,
             onItemSelected: (index) {
@@ -23,10 +23,10 @@ class FichasScreen extends StatelessWidget {
               } else if (index == 1) {
                 print('Ya estás en Fichas Médicas');
               } else if (index == 2) {
-                // cerrar sesion a /login
+         
                 Navigator.pushReplacementNamed(context, '/login');
               }
-            // Futuros indices
+            
             },
           ),
         ),

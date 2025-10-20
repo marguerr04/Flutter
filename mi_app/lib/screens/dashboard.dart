@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../widgets/layout/admin_sidebar.dart';
-// 1. Importa tu nuevo widget de gráfico
-import '../widgets/dashboard/analyte_line_chart.dart'; 
+import '../widgets/dashboard/analyte_line_chart.dart';
+import '../widgets/dashboard/results_bar_chart.dart'; 
 
 class DashboardPage extends StatelessWidget {
   const DashboardPage({super.key});
@@ -9,10 +9,10 @@ class DashboardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100], // Un fondo suave para la página
+      backgroundColor: Colors.grey[100], 
       body: Row(
         children: [
-          // Sidebar (El tuyo ya tiene la lógica de navegación)
+          // Sidebar 
           AdminSidebar(
             selectedIndex: 0,
             onItemSelected: (index) {
@@ -24,26 +24,42 @@ class DashboardPage extends StatelessWidget {
             },
           ),
           
-          // --- CONTENIDO PRINCIPAL DEL DASHBOARD ---
+
           Expanded(
-            flex: 8,
-            child: SingleChildScrollView( // Usamos SingleChildScrollView para evitar overflows
+            flex: 8, 
+            child: SingleChildScrollView(
               padding: const EdgeInsets.all(24.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Text(
+                children: [
+                  const Text(
                     'Dashboard Médico',
                     style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
 
-                  // 2. Aquí colocamos nuestro nuevo componente de gráfico
-                  AnalyteLineChart(),
-                  
-                  SizedBox(height: 24),
-                  
-                  // Aquí podrías añadir más gráficos o tarjetas en el futuro
+
+                  LayoutBuilder(
+                    builder: (context, constraints) {
+                      if (constraints.maxWidth < 900) {
+                        return Column(
+                          children: const [
+                            AnalyteLineChart(),
+                            SizedBox(height: 24),
+                            ResultsBarChart(),
+                          ],
+                        );
+                      }
+                      return Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          Expanded(child: AnalyteLineChart()),
+                          SizedBox(width: 24),
+                          Expanded(child: ResultsBarChart()),
+                        ],
+                      );
+                    },
+                  ),
                 ],
               ),
             ),

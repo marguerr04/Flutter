@@ -40,7 +40,7 @@ class AnalyteLineChart extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Título y Filtro
+
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -56,23 +56,23 @@ class AnalyteLineChart extends StatelessWidget {
           Expanded(
             child: LineChart(
               LineChartData(
-                // --- RANGO NORMAL SOMBREADO ---
+
                 lineTouchData: const LineTouchData(enabled: false),
                 extraLinesData: ExtraLinesData(
                   horizontalLines: [
                     HorizontalLine(
                       y: normalRangeMin,
                       color: const Color(0x33a8e6a1),
-                      strokeWidth: 50, // Ancho del sombreado
+                      strokeWidth: 50, // Ancho de sombra
                     ),
                   ]
                 ),
-                // --- LÍNEA PRINCIPAL Y PUNTOS ---
+
                 lineBarsData: [
                   LineChartBarData(
                     spots: spots,
                     isCurved: true,
-                    color: const Color(0xFF007bff), // Azul
+                    color: const Color(0xFF007bff), 
                     barWidth: 3,
                     isStrokeCapRound: true,
                     dotData: FlDotData(
@@ -90,7 +90,7 @@ class AnalyteLineChart extends StatelessWidget {
                     belowBarData: BarAreaData(show: false),
                   ),
                 ],
-                // --- CONFIGURACIÓN DE EJES Y BORDES ---
+                
                 titlesData: const FlTitlesData(
                   leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: true, reservedSize: 40)),
                   bottomTitles: AxisTitles(sideTitles: SideTitles(showTitles: true, reservedSize: 30)),
@@ -102,8 +102,8 @@ class AnalyteLineChart extends StatelessWidget {
                   show: true,
                   border: Border.all(color: const Color(0xffe7e7e7), width: 1),
                 ),
-                minY: 50, // Valor mínimo del eje Y
-                maxY: 150, // Valor máximo del eje Y
+                minY: 50, 
+                maxY: 150, 
               ),
             ),
           ),
