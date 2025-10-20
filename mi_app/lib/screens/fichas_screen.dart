@@ -7,10 +7,9 @@ class FichasScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // No usamos AppBar porque la navegación está en el sidebar
-      body: Row( // Usamos una Fila para la disposición horizontal
+      body: Row( 
         children: [
-          // 1. A la izquierda, colocamos nuestro componente reutilizable
+ 
 
           Expanded(
           flex: 2, // 20% del total
@@ -19,11 +18,9 @@ class FichasScreen extends StatelessWidget {
             onItemSelected: (index) {
               print('Índice seleccionado: $index');
               
-              // Ejemplo de navegación:
               if (index == 0) {
                 Navigator.pushNamed(context, '/dashboard');
               } else if (index == 1) {
-                // imprimir en consola que ya estamos en fichas
                 print('Ya estás en Fichas Médicas');
               } else if (index == 2) {
                 // cerrar sesion a /login

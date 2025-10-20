@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:mi_app/screens/dashboard.dart';
 import 'home.dart';
+import 'dashboard.dart';  
 
 const Color cyanClaro = Color(0xFF63FFAC);
 const Color cyanOscuro = Color(0xFF30CBA1);
