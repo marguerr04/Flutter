@@ -7,6 +7,7 @@ import '../models/analito_point.model.dart';
 import '../models/examen_stats.model.dart';
 import '../services/analitos_services.dart';
 import '../services/examenes_services.dart';
+import '../widgets/dashboard/metric_summary_card.dart';
 
 // CAMBIO 1: Convertir a StatefulWidget
 class DashboardPage extends StatefulWidget {
@@ -148,6 +149,45 @@ class _DashboardPageState extends State<DashboardPage> {
                     style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 24),
+
+                  // Carta fila de metricas
+
+                  Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // Tarjeta 1
+                        MetricSummaryCard(
+                          title: "Total de pacientes registrados",
+                          value: "7495", // TODO: Reemplazar con datos reales del servicio
+                          changePercentage: "+50%",
+                          changeColor: Colors.green,
+                        ),
+                        
+                        const SizedBox(width: 24), // Espacio entre tarjetas
+
+                        // Tarjeta 2
+                        MetricSummaryCard(
+                          title: "Promedio de consultas diarias",
+                          value: "45", // TODO: Reemplazar con datos reales del servicio
+                          changePercentage: "+2.3%",
+                          changeColor: Colors.green,
+                        ),
+                        
+                        const SizedBox(width: 24), // Espacio entre tarjetas
+
+                        // Tarjeta 3
+                        MetricSummaryCard(
+                          title: "Pacientes con alertas críticas",
+                          value: "50", // TODO: Reemplazar con datos reales del servicio
+                          changePercentage: "-2.3%",
+                          changeColor: Colors.red,
+                        ),
+                      ],
+                    ),
+
+                    const SizedBox(height: 24), // Espacio extra antes de los gráficos
+
+
 
                   // CAMBIO 7: Pasar datos reales a los gráficos
                   LayoutBuilder(
